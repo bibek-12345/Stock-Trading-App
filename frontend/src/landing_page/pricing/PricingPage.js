@@ -8,11 +8,9 @@ import Footer from '../Footer';
 function Pricing() {
     return ( 
         <>
-            <Navbar/>
             <Hero/>
             <OpenAccount/>
             <Brokerage/>
-            <Footer/>
         </>
      );
 }
