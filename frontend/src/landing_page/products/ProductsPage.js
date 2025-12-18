@@ -7,7 +7,6 @@ import Universe from "./Universe";
 import Footer from "../Footer";
 
 function ProductsPage() {
-
   return (
     <>
       <Hero />
@@ -20,7 +19,12 @@ function ProductsPage() {
         googlePlay=""
         appStore=""
       />
-      <RightSection />
+      <RightSection
+        productName="Console"
+        productDescription="The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
+        learnMore=""
+        imageURL="media/images/console.png"
+      />
       <LeftSection
         imageURL="media/images/coin.png"
         productName="Coin"
@@ -30,7 +34,12 @@ function ProductsPage() {
         googlePlay=""
         appStore=""
       />
-      <RightSection />
+      <RightSection
+        productName="Kite Connect API"
+        productDescription="Build powerful trading platforms and experiences with our super simple HTTP/JSON APIs. If you are a startup, build your investment app and showcase it to our clientbase."
+        learnMore=""
+        imageURL="media/images/kiteconnect.png"
+      />
       <LeftSection
         imageURL="media/images/varsity.png"
         productName="Varsity mobile"
@@ -40,7 +49,10 @@ function ProductsPage() {
         googlePlay=""
         appStore=""
       />
-      
+      <p>
+        Want to know more about our technology stack? Check out the Zerodha.tech
+        blog.
+      </p>
       <Universe />
     </>
   );
