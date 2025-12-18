@@ -2,12 +2,10 @@ import React from "react";
 
 function CreateTicket() {
   return (
-    <div className="container border border-info">
-      <div className="row p-5 mt-5 mb-5 border border-danger">
-        <h1 className="fs-2">
-          To create a ticket, select a relevant topic
-        </h1>
-        <div className="col-4 p-5 mt-2 mb-2 no-underline border">
+    <div className="container">
+      <div className="row p-5 mt-5 mb-5">
+        <h1 className="fs-2">To create a ticket, select a relevant topic</h1>
+        <div className="col-4 p-5 mt-2 mb-2 no-underline">
           <h4 className="">
             <i class="fa-solid fa-circle-plus"></i> Account Opening
           </h4>
@@ -43,7 +41,7 @@ function CreateTicket() {
             Getting Started
           </a>
         </div>
-        <div className="col-4 p-5 mt-2 mb-2 no-underline border">
+        <div className="col-4 p-5 mt-2 mb-2 no-underline">
           <h4 className="">
             <i class="fa-solid fa-circle-user"></i> Your Zerodha Account
           </h4>
@@ -56,11 +54,11 @@ function CreateTicket() {
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
-           Client Master Report (CMR) and Depository
+            Client Master Report (CMR) and Depository
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
-           Participant (DP)
+            Participant (DP)
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
@@ -71,7 +69,7 @@ function CreateTicket() {
             Transfer and conversion of securities
           </a>
         </div>
-        <div className="col-4 p-5 mt-2 mb-2 no-underline border">
+        <div className="col-4 p-5 mt-2 mb-2 no-underline">
           <h4 className="">
             <i class="fa-solid fa-chart-bar"></i> Kite
           </h4>
@@ -94,14 +92,14 @@ function CreateTicket() {
           <a href="" style={{ lineHeight: "2.5" }}>
             Alerts and Nudges
           </a>
-          <br/>
+          <br />
           <a href="" style={{ lineHeight: "2.5" }}>
-           General
+            General
           </a>
         </div>
-        <div className="col-4 p-5 mt-2 mb-2 no-underline border">
+        <div className="col-4 p-5 mt-2 mb-2 no-underline">
           <h4 className="">
-            <i class="fa-solid fa-briefcase"></i>  Funds
+            <i class="fa-solid fa-briefcase"></i> Funds
           </h4>
           <a href="" style={{ lineHeight: "2.5" }}>
             Add money
@@ -112,14 +110,14 @@ function CreateTicket() {
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
-           Add Bank Accounts
+            Add Bank Accounts
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
             eMandates
           </a>
         </div>
-        <div className="col-4 p-5 mt-2 mb-2 no-underline border">
+        <div className="col-4 p-5 mt-2 mb-2 no-underline">
           <h4 className="">
             <i class="fa-solid fa-spinner"></i> Console
           </h4>
@@ -147,7 +145,7 @@ function CreateTicket() {
             Segments
           </a>
         </div>
-        <div className="col-4 p-5 mt-2 mb-2 no-underline border">
+        <div className="col-4 p-5 mt-2 mb-2 no-underline">
           <h4 className="">
             <i class="fa-solid fa-life-ring"></i> Coin
           </h4>
@@ -160,7 +158,7 @@ function CreateTicket() {
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
-           Features on Coin
+            Features on Coin
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
@@ -168,7 +166,7 @@ function CreateTicket() {
           </a>
           <br />
           <a href="" style={{ lineHeight: "2.5" }}>
-           General
+            General
           </a>
         </div>
       </div>
