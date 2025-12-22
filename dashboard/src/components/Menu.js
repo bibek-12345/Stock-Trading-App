@@ -3,18 +3,24 @@ import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
   };
 
-  const handleProfileClick = (index) => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  };
-
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
+
+
+  const username = localStorage.getItem("username") || "User";
+  const avatarText = username.slice(0, 2).toUpperCase();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "http://localhost:3000"; // frontend
+  };
+
 
   return (
     <div className="menu-container">
@@ -33,7 +39,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-             <Link
+            <Link
               style={{ textDecoration: "none" }}
               to="/orders"
               onClick={() => handleMenuClick(1)}
@@ -44,7 +50,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-             <Link
+            <Link
               style={{ textDecoration: "none" }}
               to="/holdings"
               onClick={() => handleMenuClick(2)}
@@ -55,7 +61,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-             <Link
+            <Link
               style={{ textDecoration: "none" }}
               to="/positions"
               onClick={() => handleMenuClick(3)}
@@ -66,7 +72,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-             <Link
+            <Link
               style={{ textDecoration: "none" }}
               to="/funds"
               onClick={() => handleMenuClick(4)}
@@ -77,7 +83,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-             <Link
+            <Link
               style={{ textDecoration: "none" }}
               to="/apps"
               onClick={() => handleMenuClick(5)}
@@ -87,11 +93,20 @@ const Menu = () => {
               </p>
             </Link>
           </li>
+          <li>
+            <p
+              className={menuClass}
+              style={{ cursor: "pointer", color: "red" }}
+              onClick={handleLogout}
+            >
+              Logout
+            </p>
+          </li>
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+        <div className="profile">
+          <div className="avatar">{avatarText}</div>
+          <p className="username">{username}</p>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Apps from "./Apps";
@@ -12,6 +12,16 @@ import WatchList from "./WatchList";
 import { GeneralContextProvider } from "./GeneralContext";
 
 const Dashboard = () => {
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+    if (!token) {
+      window.location.href = "http://localhost:3000";
+    } else {
+      localStorage.setItem("token", token); // store in dashboard localStorage
+    }
+  }, []);
+
   return (
     <div className="dashboard-container">
       <GeneralContextProvider>
