@@ -14,7 +14,13 @@ function Login() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3002/login", {
+      //For Development
+      // const res = await axios.post("http://localhost:3002/login", {
+      //   username,
+      //   password,
+      // });
+      // For Production
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         username,
         password,
       });
@@ -26,7 +32,11 @@ function Login() {
       // Redirect to separate dashboard app
       // Frontend login.js
       // Redirect to separate dashboard app
-      window.location.href = `http://localhost:3001?token=${res.data.token}`;
+      //For Development
+      // window.location.href = `http://localhost:3001?token=${res.data.token}`;
+      
+      //For Production 
+      window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}?token=${res.data.token}`;
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }

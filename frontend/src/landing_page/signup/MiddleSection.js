@@ -12,7 +12,14 @@ function MiddleSection() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3002/signup", {
+      //For development
+      // const response = await axios.post("http://localhost:3002/signup", {
+      //   username,
+      //   password,
+      // });
+
+      // for production
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
         username,
         password,
       });
