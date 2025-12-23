@@ -19,11 +19,16 @@ function MiddleSection() {
       // });
 
       // for production
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/signup`,
+        {
+          username,
+          password,
+        }
+      );
       alert(response.data.message);
+      // Save username for dashboard
+      localStorage.setItem("username", response.data.username);
       setUsername("");
       setPassword("");
     } catch (error) {
