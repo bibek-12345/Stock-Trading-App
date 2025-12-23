@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { VerticalGraph } from "./VerticalGraph"
+import { VerticalGraph } from "./VerticalGraph";
 
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
-  //for development 
+  //for development
   // useEffect(() => {
   //   axios.get("http://localhost:3002/allHoldings").then((res) => {
   //     setAllHoldings(res.data);
@@ -14,23 +14,39 @@ const Holdings = () => {
 
   //for production
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/allHoldings`).then((res) => {
-      setAllHoldings(res.data);
-    });
+    const token = localStorage.getItem("token"); // get token saved during login
+    if (!token) {
+      alert("No token found! Please login again.");
+      window.location.href = process.env.REACT_APP_FRONTEND_URL; // redirect to login
+      return;
+    }
+
+    // Fetch data
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/allHoldings`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // send token in header
+        },
+      })
+      .then((res) => setAllHoldings(res.data))
+      .catch((err) => {
+        console.error(err);
+        alert("Failed to fetch holdings");
+      });
   }, []);
 
-const labels =  allHoldings.map((subArray) => subArray["name"]);
+  const labels = allHoldings.map((subArray) => subArray["name"]);
 
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Stock Price',
-      data: allHoldings.map((stock) => stock.price),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-  ],
-}
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Stock Price",
+        data: allHoldings.map((stock) => stock.price),
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
   return (
     <>
       <h3 className="title">Holdings ({allHoldings.length})</h3>
@@ -90,7 +106,7 @@ const data = {
           <p>P&L</p>
         </div>
       </div>
-      <VerticalGraph data={data}/>
+      <VerticalGraph data={data} />
     </>
   );
 };
