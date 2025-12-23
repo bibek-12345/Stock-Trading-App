@@ -15,10 +15,17 @@ const Dashboard = () => {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
+    // for development
+    // if (!token) {
+    //   window.location.href = "http://localhost:3000";
+    // } else {
+    //   localStorage.setItem("token", token); // store in dashboard localStorage
+    // }
+    //for production
     if (!token) {
-      window.location.href = "http://localhost:3000";
+      window.location.href = process.env.REACT_APP_FRONTEND_URL;
     } else {
-      localStorage.setItem("token", token); // store in dashboard localStorage
+      localStorage.setItem("token", token);
     }
   }, []);
 

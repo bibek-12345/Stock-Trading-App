@@ -5,8 +5,16 @@ import { VerticalGraph } from "./VerticalGraph"
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
+  //for development 
+  // useEffect(() => {
+  //   axios.get("http://localhost:3002/allHoldings").then((res) => {
+  //     setAllHoldings(res.data);
+  //   });
+  // }, []);
+
+  //for production
   useEffect(() => {
-    axios.get("http://localhost:3002/allHoldings").then((res) => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/allHoldings`).then((res) => {
       setAllHoldings(res.data);
     });
   }, []);

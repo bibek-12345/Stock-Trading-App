@@ -18,7 +18,11 @@ const Menu = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
-    window.location.href = "http://localhost:3000"; // frontend
+    // for development
+    // window.location.href = "http://localhost:3000"; // frontend
+    //for production
+    window.location.href = process.env.REACT_APP_FRONTEND_URL;
+
   };
 
 

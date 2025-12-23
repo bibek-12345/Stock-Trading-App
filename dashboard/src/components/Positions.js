@@ -4,8 +4,16 @@ import axios from "axios";
 const Positions = () => {
   const [allPositions, setAllPositions] = useState([]);
   
+  //for development 
+  // useEffect(()=>{
+  //   axios.get('http://localhost:3002/allPositions').then((res)=>{
+  //     setAllPositions(res.data);
+  //   })
+  // }, [])
+
+  //for production
   useEffect(()=>{
-    axios.get('http://localhost:3002/allPositions').then((res)=>{
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/allPositions`).then((res)=>{
       setAllPositions(res.data);
     })
   }, [])

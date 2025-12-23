@@ -29,6 +29,10 @@ function Login() {
       // Save token in localStorage (dashboard will read it)
       localStorage.setItem("token", res.data.token);
 
+      
+    // Save username in localStorage (so dashboard can show it)
+    localStorage.setItem("username", res.data.username);
+
       // Redirect to separate dashboard app
       // Frontend login.js
       // Redirect to separate dashboard app
