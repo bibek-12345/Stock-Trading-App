@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const authMiddleware = require("./middleware/auth");
 
 const User = require("./model/User");
 
@@ -204,7 +205,7 @@ mongoose
 // res.send("Done!")
 // });
 
-app.get("/allHoldings", async (req, res) => {
+app.get("/allHoldings", authMiddleware, async (req, res) => {
   let allHoldings = await HoldingsModel.find();
   res.json(allHoldings);
 });
@@ -262,7 +263,11 @@ app.post("/login", async (req, res) => {
     expiresIn: "1h",
   });
 
-  res.json({ message: "Login successful", token });
+  res.json({
+    message: "Login successful",
+    token,
+    username: user.username,
+  });
 });
 
 app.listen(PORT, () => {
