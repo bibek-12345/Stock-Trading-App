@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
 app.use(cors({
-  origin: [`https://stock-frontend-hazg.onrender.com/`, "http://localhost:3000"],
+  origin: [`https://stock-frontend-hazg.onrender.com`, "http://localhost:3000"],
   credentials: true,
 }));
 app.use(bodyParser.json());
