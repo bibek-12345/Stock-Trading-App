@@ -14,18 +14,21 @@ import { GeneralContextProvider } from "./GeneralContext";
 const Dashboard = () => {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-    // for development
-    // if (!token) {
-    //   window.location.href = "http://localhost:3000";
-    // } else {
-    //   localStorage.setItem("token", token); // store in dashboard localStorage
-    // }
-    //for production
-    if (!token) {
+    const tokenFromUrl = params.get("token");
+    const tokenFromStorage = localStorage.getItem("token");
+
+    // 1️⃣ If token comes from URL → save it
+    if (tokenFromUrl) {
+      localStorage.setItem("token", tokenFromUrl);
+
+      // clean URL (remove ?token=...)
+      window.history.replaceState({}, document.title, "/");
+      return;
+    }
+
+    // 2️⃣ If NO token anywhere → redirect to login
+    if (!tokenFromStorage) {
       window.location.href = process.env.REACT_APP_FRONTEND_URL;
-    } else {
-      localStorage.setItem("token", token);
     }
   }, []);
 
