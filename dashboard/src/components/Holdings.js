@@ -26,7 +26,6 @@ const Holdings = () => {
       .get(`${process.env.REACT_APP_BACKEND_URL}/allHoldings`, {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       })
-
       .then((res) => setAllHoldings(res.data))
       .catch((err) => {
         console.error(err);
