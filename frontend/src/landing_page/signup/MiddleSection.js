@@ -27,8 +27,6 @@ function MiddleSection() {
         }
       );
       alert(response.data.message);
-      // Save username for dashboard
-      localStorage.setItem("username", response.data.username);
       setUsername("");
       setPassword("");
     } catch (error) {
