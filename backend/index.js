@@ -16,10 +16,16 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
-app.use(cors({
-  origin: [`https://stock-frontend-hazg.onrender.com`, "http://localhost:3000"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      `https://stock-frontend-hazg.onrender.com`,
+      `https://stock-backend-b2dc.onrender.com`,
+      "http://localhost:3000",
+    ],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 
 // Connect to MongoDB Atlas
@@ -228,8 +234,7 @@ app.post("/signup", async (req, res) => {
 
   // Check existing user
   const existingUser = await User.findOne({ username });
-  if (existingUser)
-    return res.status(400).json({ message: "Username exists" });
+  if (existingUser) return res.status(400).json({ message: "Username exists" });
 
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -240,7 +245,6 @@ app.post("/signup", async (req, res) => {
   // ✅ Return username too
   res.json({ message: "Signup successful!", username: newUser.username });
 });
-
 
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
