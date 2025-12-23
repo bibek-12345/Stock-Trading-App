@@ -17,7 +17,7 @@ const Dashboard = () => {
     const tokenFromUrl = params.get("token");
     const tokenFromStorage = localStorage.getItem("token");
 
-    // 1️⃣ If token comes from URL → save it
+    // If token comes from URL → save it
     if (tokenFromUrl) {
       localStorage.setItem("token", tokenFromUrl);
 
@@ -26,7 +26,7 @@ const Dashboard = () => {
       return;
     }
 
-    // 2️⃣ If NO token anywhere → redirect to login
+    // If NO token anywhere → redirect to login
     if (!tokenFromStorage) {
       window.location.href = process.env.REACT_APP_FRONTEND_URL;
     }

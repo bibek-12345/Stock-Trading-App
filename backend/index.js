@@ -22,6 +22,7 @@ app.use(
     origin: [
       `https://stock-frontend-hazg.onrender.com`,
       `https://stock-backend-b2dc.onrender.com`,
+      `https://stock-dashboard-p38l.onrender.com/`,
       "http://localhost:3000",
     ],
     credentials: true,
@@ -243,7 +244,7 @@ app.post("/signup", async (req, res) => {
   const newUser = new User({ username, password: hashedPassword });
   await newUser.save();
 
-  // ✅ Return username too
+  // Return username too
   res.json({ message: "Signup successful!", username: newUser.username });
 });
 
