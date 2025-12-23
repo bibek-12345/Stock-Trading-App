@@ -30,7 +30,7 @@ const corsOptions = {
 
 // Use CORS middleware
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(bodyParser.json());
 
 app.use(bodyParser.json());
 
