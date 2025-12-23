@@ -24,10 +24,9 @@ const Holdings = () => {
     // Fetch data
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/allHoldings`, {
-        headers: {
-          Authorization: `Bearer ${token}`, // send token in header
-        },
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       })
+
       .then((res) => setAllHoldings(res.data))
       .catch((err) => {
         console.error(err);
